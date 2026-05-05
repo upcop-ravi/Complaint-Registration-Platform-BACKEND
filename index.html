@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anti-Grav Control | Dashboard</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body class="antialiased">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-slate-900 border-b border-cyan-500/30 py-3">
+        <div class="container">
+            <a class="navbar-brand font-black tracking-tighter text-cyan-400" href="#">
+                <i class="fas fa-atom fa-spin mr-2"></i> ANTI-GRAV <span class="text-white font-light">PROJ</span>
+            </a>
+            <div class="navbar-nav ms-auto flex-row gap-4">
+                <span class="text-slate-400 text-sm hidden md:block"><i class="fas fa-satellite mr-1"></i> Uplink:
+                    Active</span>
+                <span class="text-cyan-500 text-sm"><i class="fas fa-clock mr-1"></i> 2026-05-05</span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-10">
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+            <div class="glass-card p-6 rounded-3xl md:col-span-1 border-t-2 border-cyan-500">
+                <h3 class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">Core Stability</h3>
+                <div class="flex items-center gap-4">
+                    <div class="text-4xl font-mono font-bold neon-text text-white">98.2%</div>
+                    <i class="fas fa-bolt text-cyan-400 animate-pulse"></i>
+                </div>
+                <div class="mt-6 space-y-3">
+                    <div class="flex justify-between text-xs text-slate-400"><span>Flux Capacitor</span><span>OK</span>
+                    </div>
+                    <div class="progress bg-slate-800" style="height: 6px;">
+                        <div class="progress-bar bg-cyan-400" style="width: 90%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-card p-6 rounded-3xl md:col-span-2">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xs font-bold uppercase tracking-widest text-purple-400">Field Analysis</h3>
+                    <i class="fas fa-sync-alt fa-spin text-xs text-slate-500"></i>
+                </div>
+                <div class="h-[200px]">
+                    <canvas id="gravityChart"></canvas>
+                </div>
+            </div>
+
+            <div class="glass-card p-6 rounded-3xl md:col-span-3 grid grid-cols-1 md:grid-cols-4 gap-4">
+                <button class="btn btn-outline-info rounded-xl py-3 text-xs uppercase font-bold tracking-widest">
+                    <i class="fas fa-redo mr-2"></i> Calibrate
+                </button>
+                <button class="btn btn-outline-primary rounded-xl py-3 text-xs uppercase font-bold tracking-widest">
+                    <i class="fas fa-level-up-alt mr-2"></i> Lift Off
+                </button>
+                <button
+                    class="btn btn-outline-warning rounded-xl py-3 text-xs uppercase font-bold tracking-widest text-yellow-500">
+                    <i class="fas fa-pause mr-2"></i> Suspend
+                </button>
+                <button class="btn btn-outline-danger rounded-xl py-3 text-xs uppercase font-bold tracking-widest">
+                    <i class="fas fa-power-off mr-2"></i> E-Stop
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+    <div class="fixed bottom-6 right-6 z-50">
+        <button id="chat-toggle"
+            class="bg-cyan-500 text-white p-4 rounded-full shadow-2xl hover:bg-cyan-400 transition transform hover:rotate-12">
+            <i class="fas fa-robot text-xl"></i>
+        </button>
+
+        <div id="chat-window"
+            class="hidden absolute bottom-20 right-0 w-80 glass-card rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-cyan-500/40">
+            <div class="bg-cyan-600 p-3 flex justify-between items-center">
+                <span class="text-xs font-bold tracking-widest">GRAV-AI ASSIST</span>
+                <i id="close-chat" class="fas fa-times cursor-pointer opacity-70 hover:opacity-100"></i>
+            </div>
+            <div id="chat-body" class="h-48 p-4 overflow-y-auto bg-slate-900/90 text-xs space-y-3">
+                <div class="p-2 bg-slate-800 rounded-lg border-l-2 border-cyan-500">Awaiting commands... Field is
+                    stable.</div>
+            </div>
+            <div class="p-3 bg-slate-800 flex gap-2">
+                <input type="text" placeholder="Command..."
+                    class="bg-transparent border-b border-slate-600 text-xs w-full outline-none focus:border-cyan-500 transition py-1 text-white">
+                <i class="fas fa-paper-plane text-cyan-500 self-center"></i>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
