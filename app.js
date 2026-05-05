@@ -1,32 +1,17 @@
 const express = require('express');
+const path = require('path');
 const app = express();
 const port = 3000;
 
-// Route for "GET /"
+// Serve static files (CSS, JS)
+app.use(express.static(__dirname));
+
+// Route for "GET /" - Serves the Pro Dashboard
 app.get('/', (req, res) => {
-    res.send(`
-        <!DOCTYPE html>
-        <html>
-        <head>
-            <title>App Page</title>
-            <style>
-                body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background-color: #f0f2f5; }
-                .container { text-align: center; padding: 2rem; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-                h1 { color: #1a73e8; }
-            </style>
-        </head>
-        <body>
-            <div class="container">
-                <h1>App Page</h1>
-                <p>Welcome to the main application page!</p>
-                <a href="/hello">Go to Hello Page</a>
-            </div>
-        </body>
-        </html>
-    `);
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-// Route for "GET /hello"
+// Route for "GET /hello" - Keeping it as requested before
 app.get('/hello', (req, res) => {
     res.send(`
         <!DOCTYPE html>
@@ -34,16 +19,17 @@ app.get('/hello', (req, res) => {
         <head>
             <title>Hello Page</title>
             <style>
-                body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background-color: #e8f0fe; }
-                .container { text-align: center; padding: 2rem; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-                h1 { color: #188038; }
+                body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background-color: #020617; color: white; }
+                .container { text-align: center; padding: 2rem; background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(34, 211, 238, 0.15); border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+                h1 { color: #22d3ee; }
+                a { color: #22d3ee; text-decoration: none; font-weight: bold; }
             </style>
         </head>
         <body>
             <div class="container">
                 <h1>Hello!</h1>
                 <p>This is the hello page.</p>
-                <a href="/">Back to Home</a>
+                <a href="/">Back to Dashboard</a>
             </div>
         </body>
         </html>

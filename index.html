@@ -4,102 +4,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anti-Grav Control | Dashboard</title>
+    <title>JanDarwaarPortal | Pro Edition</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+
 </head>
 
-<body class="antialiased">
+<body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-slate-900 border-b border-cyan-500/30 py-3">
-        <div class="container">
-            <a class="navbar-brand font-black tracking-tighter text-cyan-400" href="#">
-                <i class="fas fa-atom fa-spin mr-2"></i> ANTI-GRAV <span class="text-white font-light">PROJ</span>
-            </a>
-            <div class="navbar-nav ms-auto flex-row gap-4">
-                <span class="text-slate-400 text-sm hidden md:block"><i class="fas fa-satellite mr-1"></i> Uplink:
-                    Active</span>
-                <span class="text-cyan-500 text-sm"><i class="fas fa-clock mr-1"></i> 2026-05-05</span>
-            </div>
-        </div>
-    </nav>
+    <div class="main-container">
+        <nav class="navbar navbar-dark bg-slate-950 border-b border-cyan-900/50 py-3 mb-8">
+            <div class="container flex justify-between items-center">
+                <a class="navbar-brand font-black text-orange-500 tracking-tighter" href="#">
+                    <i class="fas fa-microchip mr-2 animate-pulse"></i> JanDarwaar<span class="text-white opacity-50">Portal</span>
+                </a>
 
-    <main class="container mx-auto px-4 py-10">
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-            <div class="glass-card p-6 rounded-3xl md:col-span-1 border-t-2 border-cyan-500">
-                <h3 class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">Core Stability</h3>
-                <div class="flex items-center gap-4">
-                    <div class="text-4xl font-mono font-bold neon-text text-white">98.2%</div>
-                    <i class="fas fa-bolt text-cyan-400 animate-pulse"></i>
-                </div>
-                <div class="mt-6 space-y-3">
-                    <div class="flex justify-between text-xs text-slate-400"><span>Flux Capacitor</span><span>OK</span>
+                <div class="flex items-center gap-10">
+                    <!-- Navigation Options -->
+                    <div class="hidden xl:flex gap-6 uppercase text-[10px] tracking-[0.2em] font-bold">
+                        <a href="index.html" class="text-orange-500 hover:text-white transition">Home</a>
+                        <a href="report.html" class="text-slate-400 hover:text-orange-500 transition">Report Incident</a>
+                        <a href="status.html" class="text-slate-400 hover:text-orange-500 transition">Track Status</a>
+                        <a href="admin.html" class="text-slate-400 hover:text-orange-500 transition">Admin Dashboard</a>
+                        <a href="contact.html" class="text-slate-400 hover:text-orange-500 transition">Help/Contact</a>
                     </div>
-                    <div class="progress bg-slate-800" style="height: 6px;">
-                        <div class="progress-bar bg-cyan-400" style="width: 90%"></div>
+
+                    <div class="flex gap-4 text-[10px] uppercase tracking-widest text-slate-500">
+                        <button id="theme-toggle" class="mr-4 text-slate-400 hover:text-orange-500 transition">
+                            <i id="theme-icon" class="fas fa-moon"></i>
+                        </button>
+                        <div class="hidden md:flex items-center gap-4">
+                            <span><i class="fas fa-satellite-dish mr-1 text-orange-500"></i> Uplink: Active</span>
+                            <span class="text-slate-300">2026-05-05</span>
+                        </div>
                     </div>
                 </div>
             </div>
+        </nav>
 
-            <div class="glass-card p-6 rounded-3xl md:col-span-2">
-                <div class="flex justify-between items-center mb-4">
-                    <h3 class="text-xs font-bold uppercase tracking-widest text-purple-400">Field Analysis</h3>
-                    <i class="fas fa-sync-alt fa-spin text-xs text-slate-500"></i>
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                <div class="glass-card p-8">
+                    <h6 class="text-[10px] font-bold uppercase tracking-[0.3em] text-orange-500 mb-6">Core Stability</h6>
+                    <div class="flex items-baseline gap-2 mb-2">
+                        <h2 class="text-6xl font-mono font-black neon-text">98.2</h2>
+                        <span class="text-orange-600 font-bold">%</span>
+                    </div>
+                    <div class="mt-8">
+                        <div class="flex justify-between text-[10px] mb-2 uppercase text-slate-400">
+                            <span>Flux Capacitor</span>
+                            <span class="text-orange-500">Stable</span>
+                        </div>
+                        <div class="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
+                            <div class="h-full bg-gradient-to-r from-orange-600 to-orange-400" style="width: 98%"></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="h-[200px]">
-                    <canvas id="gravityChart"></canvas>
+
+                <div class="glass-card p-8 md:col-span-2">
+                    <div class="flex justify-between items-center mb-6">
+                        <h6 class="text-[10px] font-bold uppercase tracking-[0.3em] text-purple-400">Field Analysis</h6>
+                        <span
+                            class="bg-purple-500/10 text-purple-400 text-[9px] px-2 py-1 rounded border border-purple-500/20">LIVE
+                            WAVEFORM</span>
+                    </div>
+                    <div style="height: 180px;">
+                        <canvas id="gravityChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="md:col-span-3 grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                    <button
+                        class="glass-card py-4 text-[10px] font-black uppercase tracking-widest text-orange-500 hover:bg-orange-500/10">
+                        <i class="fas fa-sync mr-2"></i> Calibrate
+                    </button>
+                    <button
+                        class="glass-card py-4 text-[10px] font-black uppercase tracking-widest text-orange-400 hover:bg-orange-500/10">
+                        <i class="fas fa-arrow-up mr-2"></i> Lift Off
+                    </button>
+                    <button
+                        class="glass-card py-4 text-[10px] font-black uppercase tracking-widest text-yellow-500 hover:bg-yellow-500/10">
+                        <i class="fas fa-pause mr-2"></i> Suspend
+                    </button>
+                    <button
+                        class="glass-card py-4 text-[10px] font-black uppercase tracking-widest text-red-500 hover:bg-red-500/10 border-red-500/30">
+                        <i class="fas fa-power-off mr-2"></i> E-Stop
+                    </button>
                 </div>
             </div>
-
-            <div class="glass-card p-6 rounded-3xl md:col-span-3 grid grid-cols-1 md:grid-cols-4 gap-4">
-                <button class="btn btn-outline-info rounded-xl py-3 text-xs uppercase font-bold tracking-widest">
-                    <i class="fas fa-redo mr-2"></i> Calibrate
-                </button>
-                <button class="btn btn-outline-primary rounded-xl py-3 text-xs uppercase font-bold tracking-widest">
-                    <i class="fas fa-level-up-alt mr-2"></i> Lift Off
-                </button>
-                <button
-                    class="btn btn-outline-warning rounded-xl py-3 text-xs uppercase font-bold tracking-widest text-yellow-500">
-                    <i class="fas fa-pause mr-2"></i> Suspend
-                </button>
-                <button class="btn btn-outline-danger rounded-xl py-3 text-xs uppercase font-bold tracking-widest">
-                    <i class="fas fa-power-off mr-2"></i> E-Stop
-                </button>
-            </div>
-
         </div>
-    </main>
 
-    <div class="fixed bottom-6 right-6 z-50">
-        <button id="chat-toggle"
-            class="bg-cyan-500 text-white p-4 rounded-full shadow-2xl hover:bg-cyan-400 transition transform hover:rotate-12">
-            <i class="fas fa-robot text-xl"></i>
-        </button>
-
-        <div id="chat-window"
-            class="hidden absolute bottom-20 right-0 w-80 glass-card rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-cyan-500/40">
-            <div class="bg-cyan-600 p-3 flex justify-between items-center">
-                <span class="text-xs font-bold tracking-widest">GRAV-AI ASSIST</span>
-                <i id="close-chat" class="fas fa-times cursor-pointer opacity-70 hover:opacity-100"></i>
+        <div class="fixed bottom-8 right-8 group">
+            <div id="chat-win" class="hidden absolute bottom-20 right-0 w-80 glass-card p-4 mb-2 animate-bounce-in">
+                <p class="text-[10px] text-orange-500 font-bold mb-2">SYSTEM ASSISTANT</p>
+                <div class="bg-slate-900/50 p-3 rounded-xl text-xs text-slate-300 border border-white/5">
+                    Portal field is nominal. Monitoring uplink...
+                </div>
             </div>
-            <div id="chat-body" class="h-48 p-4 overflow-y-auto bg-slate-900/90 text-xs space-y-3">
-                <div class="p-2 bg-slate-800 rounded-lg border-l-2 border-cyan-500">Awaiting commands... Field is
-                    stable.</div>
-            </div>
-            <div class="p-3 bg-slate-800 flex gap-2">
-                <input type="text" placeholder="Command..."
-                    class="bg-transparent border-b border-slate-600 text-xs w-full outline-none focus:border-cyan-500 transition py-1 text-white">
-                <i class="fas fa-paper-plane text-cyan-500 self-center"></i>
-            </div>
+            <button id="chat-btn"
+                class="w-16 h-16 bg-orange-500 rounded-full shadow-[0_0_20px_rgba(255,153,51,0.5)] hover:scale-110 transition text-white">
+                <i class="fas fa-robot text-2xl"></i>
+            </button>
         </div>
     </div>
+    <script src="script.js" defer></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>

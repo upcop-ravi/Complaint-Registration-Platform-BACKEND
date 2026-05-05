@@ -1,34 +1,119 @@
+/* 
+ * ANTI-GRAV PROJ - Design System
+ * Core Styles, Glassmorphism, and Dark/Light Modes
+ */
+
+/* 1. Base Styles */
 body {
-    background: radial-gradient(circle at top right, #1e293b, #020617);
+    background: #000000;
+    background: radial-gradient(circle at top right, #0f172a, #000000); /* Very deep navy to black */
     color: #f8fafc;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    margin: 0;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
+.main-container {
+    background: radial-gradient(circle at top right, #0f172a, #000000);
+    min-height: 100vh;
+    padding-bottom: 50px;
+}
+
+.navbar {
+    background: #000000 !important;
+}
+
+/* 2. Glassmorphism Design */
 .glass-card {
-    background: rgba(15, 23, 42, 0.7);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 153, 51, 0.15); /* Saffron border */
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+    transition: all 0.3s ease-in-out;
 }
 
 .glass-card:hover {
-    transform: translateY(-8px);
-    border-color: rgba(34, 211, 238, 0.3);
-    box-shadow: 0 0 30px rgba(34, 211, 238, 0.1);
+    transform: translateY(-5px);
+    border-color: rgba(255, 153, 51, 0.4);
+    box-shadow: 0 0 25px rgba(255, 153, 51, 0.1);
 }
 
 .neon-text {
-    text-shadow: 0 0 10px rgba(34, 211, 238, 0.6);
+    color: #FF9933; /* Saffron */
+    text-shadow: 0 0 10px rgba(255, 153, 51, 0.5);
 }
 
-/* Custom Scrollbar for Chat */
-#chat-body::-webkit-scrollbar {
-    width: 4px;
+/* 3. Light Mode Overrides */
+body.light-mode {
+    background: #f1f5f9;
+    color: #1e293b;
 }
 
-#chat-body::-webkit-scrollbar-thumb {
-    background: #22d3ee;
+body.light-mode .main-container {
+    background: radial-gradient(circle at top right, #e2e8f0, #f1f5f9);
+}
+
+body.light-mode .glass-card {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: #1e293b;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .navbar {
+    background: #ffffff !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+}
+
+body.light-mode .navbar-brand,
+body.light-mode .text-cyan-400 {
+    color: #E67E22 !important; /* Darker saffron for readability */
+}
+
+body.light-mode .navbar-brand span {
+    color: #475569 !important;
+}
+
+body.light-mode .text-slate-400 {
+    color: #64748b !important;
+}
+
+body.light-mode .neon-text {
+    color: #E67E22;
+    text-shadow: none;
+}
+
+/* 4. Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(15, 23, 42, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #FF9933;
     border-radius: 10px;
+}
+
+body.light-mode ::-webkit-scrollbar-track {
+    background: #e2e8f0;
+}
+
+body.light-mode ::-webkit-scrollbar-thumb {
+    background: #E67E22;
+}
+
+/* 5. Animations */
+@keyframes bounce-in {
+    0% { transform: scale(0.9); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.animate-bounce-in {
+    animation: bounce-in 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
