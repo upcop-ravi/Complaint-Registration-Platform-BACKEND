@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,12 +10,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="main-container">
         <nav class="navbar navbar-dark bg-slate-950 border-b border-cyan-900/50 py-3 mb-8">
             <div class="container flex justify-between items-center">
                 <a class="navbar-brand font-black text-orange-500 tracking-tighter" href="index.html">
-                    <i class="fas fa-microchip mr-2 animate-pulse"></i> JanDarwaar<span class="text-white opacity-50">Portal</span>
+                    <i class="fas fa-microchip mr-2 animate-pulse"></i> JanDarwaar<span
+                        class="text-white opacity-50">Portal</span>
                 </a>
                 <div class="flex items-center gap-10">
                     <div class="hidden xl:flex gap-6 uppercase text-[10px] tracking-[0.2em] font-bold">
@@ -37,20 +40,70 @@
             </div>
         </nav>
 
-        <div class="container mx-auto px-4">
-            <div class="glass-card p-12 text-center">
-                <h1 class="text-4xl font-black neon-text mb-6">REPORT INCIDENT</h1>
-                <p class="text-slate-400 mb-8">Please provide details about the incident you wish to report. This is a dummy page for demonstration purposes.</p>
-                <div class="max-w-md mx-auto bg-slate-900/50 p-8 rounded-2xl border border-white/5">
-                    <i class="fas fa-file-alt text-5xl text-orange-500 mb-6"></i>
-                    <p class="text-xs uppercase tracking-widest text-slate-500">Form module pending integration</p>
+        <div class="container mx-auto px-4 pb-20">
+            <div class="glass-card p-8 md:p-12 max-w-4xl mx-auto">
+                <div class="text-center mb-10">
+                    <h1 class="text-3xl font-black neon-text mb-2 text-orange-500">INCIDENT REPORTING FORM</h1>
+                    <p class="text-slate-400 text-sm">Please provide accurate details to help us serve you better.</p>
                 </div>
-                <a href="index.html" class="inline-block mt-10 text-[10px] font-bold uppercase tracking-widest text-orange-500 hover:text-white transition">
-                    <i class="fas fa-arrow-left mr-2"></i> Back to Dashboard
-                </a>
+
+                <form id="incidentForm" class="row g-4 text-start">
+                    <div class="col-md-6">
+                        <label class="form-label">Full Name *</label>
+                        <input type="text" class="form-control" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Mobile Number *</label>
+                        <input type="tel" class="form-control" placeholder="10-digit mobile number" required
+                            pattern="[0-9]{10}">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-control" placeholder="example@email.com">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Incident Type *</label>
+                        <select class="form-select" required>
+                            <option value="" selected disabled>Select Type</option>
+                            <option value="theft">Theft / Robbery</option>
+                            <option value="harassment">Harassment</option>
+                            <option value="accident">Traffic Accident</option>
+                            <option value="cyber">Cyber Crime</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">Incident Location *</label>
+                        <input type="text" class="form-control" placeholder="Exact address or landmark" required>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">Detailed Description *</label>
+                        <textarea class="form-control" rows="4" placeholder="Describe the incident in detail..."
+                            required></textarea>
+                    </div>
+
+                    <div class="col-12 mt-10 flex gap-4">
+                        <button type="submit"
+                            class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-xl transition-all hover:scale-105 shadow-lg shadow-orange-500/20">
+                            Submit Report
+                        </button>
+                        <button type="reset"
+                            class="bg-transparent border border-slate-700 hover:border-slate-500 text-slate-400 font-bold py-3 px-8 rounded-xl transition-all">
+                            Clear Form
+                        </button>
+                    </div>
+                </form>
+
+                <div class="mt-12 pt-8 border-t border-white/5">
+                    <a href="index.html"
+                        class="inline-block text-[10px] font-bold uppercase tracking-widest text-orange-500 hover:text-white transition">
+                        <i class="fas fa-arrow-left mr-2"></i> Back to Dashboard
+                    </a>
+                </div>
             </div>
         </div>
     </div>
     <script src="script.js" defer></script>
 </body>
+
 </html>

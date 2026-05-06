@@ -6,7 +6,8 @@
 /* 1. Base Styles */
 body {
     background: #000000;
-    background: radial-gradient(circle at top right, #0f172a, #000000); /* Very deep navy to black */
+    background: radial-gradient(circle at top right, #0f172a, #000000);
+    /* Very deep navy to black */
     color: #f8fafc;
     font-family: 'Segoe UI', Roboto, sans-serif;
     margin: 0;
@@ -29,7 +30,8 @@ body {
     background: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 153, 51, 0.15); /* Saffron border */
+    border: 1px solid rgba(255, 153, 51, 0.15);
+    /* Saffron border */
     border-radius: 24px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
     transition: all 0.3s ease-in-out;
@@ -42,7 +44,8 @@ body {
 }
 
 .neon-text {
-    color: #FF9933; /* Saffron */
+    color: #FF9933;
+    /* Saffron */
     text-shadow: 0 0 10px rgba(255, 153, 51, 0.5);
 }
 
@@ -70,7 +73,8 @@ body.light-mode .navbar {
 
 body.light-mode .navbar-brand,
 body.light-mode .text-cyan-400 {
-    color: #E67E22 !important; /* Darker saffron for readability */
+    color: #E67E22 !important;
+    /* Darker saffron for readability */
 }
 
 body.light-mode .navbar-brand span {
@@ -110,10 +114,73 @@ body.light-mode ::-webkit-scrollbar-thumb {
 
 /* 5. Animations */
 @keyframes bounce-in {
-    0% { transform: scale(0.9); opacity: 0; }
-    100% { transform: scale(1); opacity: 1; }
+    0% {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 .animate-bounce-in {
     animation: bounce-in 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* 6. Form Styles */
+.form-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    color: #94a3b8;
+    margin-bottom: 0.5rem;
+}
+
+.form-control,
+.form-select {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #f8fafc !important;
+    border-radius: 12px !important;
+    padding: 0.75rem 1rem !important;
+    transition: all 0.3s ease !important;
+}
+
+.form-control:focus,
+.form-select:focus {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-color: rgba(255, 153, 51, 0.5) !important;
+    box-shadow: 0 0 15px rgba(255, 153, 51, 0.2) !important;
+    outline: none !important;
+}
+
+.form-select option {
+    background: #000000 !important;
+    color: #f8fafc !important;
+}
+
+.form-control::placeholder {
+    color: #475569 !important;
+    font-size: 0.85rem;
+}
+
+/* Light Mode Form Styles */
+body.light-mode .form-label {
+    color: #475569;
+}
+
+body.light-mode .form-control,
+body.light-mode .form-select {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    color: #1e293b !important;
+}
+
+body.light-mode .form-control:focus,
+body.light-mode .form-select:focus {
+    border-color: #E67E22 !important;
+    box-shadow: 0 0 10px rgba(230, 126, 34, 0.1) !important;
 }
