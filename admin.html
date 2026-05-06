@@ -8,9 +8,37 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+        .table-dark-custom {
+            background: transparent !important;
+            color: #f8fafc !important;
+        }
+        .table-dark-custom thead th {
+            border-bottom: 1px solid rgba(255, 153, 51, 0.2);
+            color: #FF9933;
+            text-transform: uppercase;
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            padding: 1.5rem 1rem;
+        }
+        .table-dark-custom tbody td {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1.25rem 1rem;
+            vertical-align: middle;
+            font-size: 13px;
+        }
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+    </style>
 </head>
 <body>
     <div class="main-container">
+        <!-- Navbar -->
         <nav class="navbar navbar-dark bg-slate-950 border-b border-cyan-900/50 py-3 mb-8">
             <div class="container flex justify-between items-center">
                 <a class="navbar-brand font-black text-orange-500 tracking-tighter" href="index.html">
@@ -30,27 +58,123 @@
                         </button>
                         <div class="hidden md:flex items-center gap-4">
                             <span><i class="fas fa-satellite-dish mr-1 text-orange-500"></i> Uplink: Active</span>
-                            <span class="text-slate-300">2026-05-05</span>
                         </div>
                     </div>
                 </div>
             </div>
         </nav>
 
-        <div class="container mx-auto px-4">
-            <div class="glass-card p-12 text-center">
-                <h1 class="text-4xl font-black neon-text mb-6">ADMIN DASHBOARD</h1>
-                <p class="text-slate-400 mb-8">Access restricted. Unauthorized access attempts are logged.</p>
-                <div class="max-w-md mx-auto bg-slate-900/50 p-8 rounded-2xl border border-red-500/20">
-                    <i class="fas fa-user-shield text-5xl text-red-500 mb-6"></i>
-                    <p class="text-xs uppercase tracking-widest text-slate-500">Authentication Required</p>
+        <div class="container mx-auto px-4 pb-20">
+            <!-- Stats Overview -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
+                <div class="glass-card p-6">
+                    <p class="text-[10px] uppercase tracking-widest text-slate-500 mb-2">Total Reports</p>
+                    <h3 class="text-3xl font-black text-white">1,284</h3>
+                    <div class="mt-4 flex items-center text-[10px] text-green-500">
+                        <i class="fas fa-arrow-up mr-1"></i> 12% from last month
+                    </div>
                 </div>
-                <a href="index.html" class="inline-block mt-10 text-[10px] font-bold uppercase tracking-widest text-orange-500 hover:text-white transition">
-                    <i class="fas fa-arrow-left mr-2"></i> Back to Dashboard
-                </a>
+                <div class="glass-card p-6">
+                    <p class="text-[10px] uppercase tracking-widest text-slate-500 mb-2">Pending Review</p>
+                    <h3 class="text-3xl font-black text-orange-500">42</h3>
+                    <div class="mt-4 flex items-center text-[10px] text-orange-400">
+                        <i class="fas fa-clock mr-1"></i> Requires attention
+                    </div>
+                </div>
+                <div class="glass-card p-6">
+                    <p class="text-[10px] uppercase tracking-widest text-slate-500 mb-2">Resolved</p>
+                    <h3 class="text-3xl font-black text-green-500">1,192</h3>
+                    <div class="mt-4 flex items-center text-[10px] text-slate-500">
+                        93% Resolution rate
+                    </div>
+                </div>
+                <div class="glass-card p-6">
+                    <p class="text-[10px] uppercase tracking-widest text-slate-500 mb-2">Active Officers</p>
+                    <h3 class="text-3xl font-black text-blue-500">156</h3>
+                    <div class="mt-4 flex items-center text-[10px] text-blue-400">
+                        <i class="fas fa-signal mr-1"></i> Online now
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Table Section -->
+            <div class="glass-card overflow-hidden">
+                <div class="p-6 border-b border-white/5 flex justify-between items-center">
+                    <h3 class="text-lg font-bold text-white uppercase tracking-tight">Recent Incident Reports</h3>
+                    <div class="flex gap-4">
+                        <button class="bg-slate-900 border border-white/10 text-xs px-4 py-2 rounded-lg text-slate-300 hover:border-orange-500 transition">
+                            <i class="fas fa-filter mr-2 text-orange-500"></i> Filter
+                        </button>
+                        <button class="bg-orange-500 text-white text-xs px-4 py-2 rounded-lg font-bold hover:bg-orange-600 transition">
+                            <i class="fas fa-download mr-2"></i> Export Data
+                        </button>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-dark-custom mb-0">
+                        <thead>
+                            <tr>
+                                <th>Incident ID</th>
+                                <th>Reporter</th>
+                                <th>Type</th>
+                                <th>Location</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="font-mono text-orange-500">#INC-8291</td>
+                                <td>
+                                    <div class="font-bold">Rahul Sharma</div>
+                                    <div class="text-[10px] text-slate-500">+91 98765 43210</div>
+                                </td>
+                                <td>Theft</td>
+                                <td class="text-slate-400">Gomti Nagar, Lucknow</td>
+                                <td><span class="status-badge bg-orange-500/20 text-orange-500">Pending</span></td>
+                                <td>
+                                    <button class="text-slate-400 hover:text-white mr-3"><i class="fas fa-eye"></i></button>
+                                    <button class="text-slate-400 hover:text-green-500 mr-3"><i class="fas fa-check"></i></button>
+                                    <button class="text-slate-400 hover:text-red-500"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="font-mono text-orange-500">#INC-8290</td>
+                                <td>
+                                    <div class="font-bold">Priya Verma</div>
+                                    <div class="text-[10px] text-slate-500">+91 91234 56789</div>
+                                </td>
+                                <td>Harassment</td>
+                                <td class="text-slate-400">Hazratganj, Lucknow</td>
+                                <td><span class="status-badge bg-green-500/20 text-green-500">Resolved</span></td>
+                                <td>
+                                    <button class="text-slate-400 hover:text-white mr-3"><i class="fas fa-eye"></i></button>
+                                    <button class="text-slate-400 hover:text-green-500 mr-3"><i class="fas fa-check"></i></button>
+                                    <button class="text-slate-400 hover:text-red-500"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="font-mono text-orange-500">#INC-8289</td>
+                                <td>
+                                    <div class="font-bold">Ankit Gupta</div>
+                                    <div class="text-[10px] text-slate-500">+91 88888 77777</div>
+                                </td>
+                                <td>Accident</td>
+                                <td class="text-slate-400">Indira Nagar, Lucknow</td>
+                                <td><span class="status-badge bg-blue-500/20 text-blue-500">In Progress</span></td>
+                                <td>
+                                    <button class="text-slate-400 hover:text-white mr-3"><i class="fas fa-eye"></i></button>
+                                    <button class="text-slate-400 hover:text-green-500 mr-3"><i class="fas fa-check"></i></button>
+                                    <button class="text-slate-400 hover:text-red-500"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
+
     <script src="script.js" defer></script>
 </body>
 </html>
